@@ -10,6 +10,10 @@ A minimalist :dolphin: docker image for **Ruby** based on latest **[Alpine Linux
 - :hammer: Ready to build gem with native extensions (like **Nokogiri**);
 - :stuck_out_tongue: Ready to run Rails + PostgreSQL application.
 
+## Native extensions
+
+Coming soon
+
 ## How to use?
 
 Coming soon
