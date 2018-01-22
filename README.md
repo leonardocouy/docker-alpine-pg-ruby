@@ -9,6 +9,7 @@ A minimalist :dolphin: docker image for **Ruby** based on latest **[Alpine Linux
 - :package: Ready to bundler usage;
 - :elephant: Ready to **PostgreSQL** usage (**if you use pg gem**);
 - :hammer: Ready to build gem with native extensions (like **Nokogiri**);
+- :neckbeard: Ready to use gem **pry-debugger** (contains Readline)
 - :stuck_out_tongue: Ready to run Rails + PostgreSQL application.
 
 ## Specifying a Ruby Version
