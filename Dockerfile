@@ -4,7 +4,7 @@ LABEL maintainer="Leonardo Flores <contato@leonardocouy.com>"
 ARG RUBY_VERSION
 
 ENV BUILD_DEPS="curl tar wget linux-headers" \
-    DEV_DEPS="build-base postgresql-dev zlib-dev libxml2-dev libxslt-dev tzdata git"
+    DEV_DEPS="build-base postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev tzdata git nodejs"
 
 RUN apk add --update --upgrade $BUILD_DEPS $DEV_DEPS
 
@@ -25,16 +25,12 @@ RUN \
   && make install \
   && rm -rf /ruby-$RUBY_VERSION
 
-## Install bundler
-RUN gem install -N bundler
-
-## Disable bundler warning
-RUN bundle config --global silence_root_warning 1
-
-## Prevents install gem documentation
-RUN echo -e 'gem: --no-document' >> /etc/gemrc
+## Install bundler, disable bundler warning and prevents install gem documentations
+RUN gem install -N bundler \
+  && bundle config --global silence_root_warning 1 \
+  && echo -e 'gem: --no-document' >> /etc/gemrc
 
 # Clean and uninstall
-RUN apk del $BUILD_DEPS
-RUN rm -rf /var/cache/apk/*
-RUN rm -rf /usr/lib/ruby/gems/*/cache/*;
+RUN apk del $BUILD_DEPS \
+  && rm -rf /var/cache/apk/* \
+  && rm -rf /usr/lib/ruby/gems/*/cache/*;
